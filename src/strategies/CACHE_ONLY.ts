@@ -28,13 +28,12 @@
 import {
   Key, DataFetcher, DataStorage, CachedData,
 } from '../types';
-import CacheDataNotFoundError from '../exceptions/CacheDataNotFoundError';
 
 export default async function CACHE_ONLY<R>(
   key: Key,
   _: DataFetcher<R>,
   storage: DataStorage<CachedData<R>>,
-): Promise<R> {
+): Promise<R | undefined> {
   if (storage.has(key)) {
     const data = storage.get(key);
 
@@ -44,5 +43,5 @@ export default async function CACHE_ONLY<R>(
     }
   }
 
-  throw new CacheDataNotFoundError(key);
+  return undefined;
 }
