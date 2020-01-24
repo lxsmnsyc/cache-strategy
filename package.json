@@ -1,0 +1,32 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "prepare": "tsdx build"
+  },
+  "peerDependencies": {},
+  "name": "cache-strategy",
+  "author": "Alexis Munsayac",
+  "module": "dist/cache-strategy.esm.js",
+  "devDependencies": {
+    "@types/jest": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint": "latest",
+    "eslint-config-airbnb-base": "latest",
+    "eslint-plugin-import": "latest",
+    "tsdx": "latest",
+    "tslib": "latest",
+    "typescript": "latest"
+  }
+}
