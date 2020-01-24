@@ -45,4 +45,8 @@ export default class CacheMap<R> implements DataStorage<R> {
   has(key: Key): boolean {
     return this.map.has(key);
   }
+
+  remove(key: Key): void {
+    this.map.delete(key);
+  }
 }
