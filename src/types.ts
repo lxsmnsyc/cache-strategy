@@ -40,6 +40,7 @@ export interface DataStorage<R> {
   get: (key: Key) => R | undefined;
   set: (key: Key, value: R) => void;
   has: (key: Key) => boolean;
+  remove: (key: Key) => void;
 }
 
 export type CacheStrategy<R> = (
@@ -47,7 +48,7 @@ export type CacheStrategy<R> = (
   fetcher: DataFetcher<R>,
   storage: DataStorage<CachedData<R>>,
   age: Age,
-) => Promise<R>;
+) => Promise<R | undefined>;
 
 export interface Config<R> {
   readonly strategy: CacheStrategy<R>;
