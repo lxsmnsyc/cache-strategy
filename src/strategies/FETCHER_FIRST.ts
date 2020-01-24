@@ -28,14 +28,13 @@
 import {
   Key, DataFetcher, DataStorage, Age, CachedData,
 } from '../types';
-import CacheDataNotFoundError from '../exceptions/CacheDataNotFoundError';
 
 export default async function FETCHER_FIRST<R>(
   key: Key,
   fetcher: DataFetcher<R>,
   storage: DataStorage<CachedData<R>>,
   age: Age,
-): Promise<R> {
+): Promise<R | undefined> {
   try {
     // age exceeded, fetch
     const newData = await fetcher(key);
@@ -62,7 +61,7 @@ export default async function FETCHER_FIRST<R>(
           return data.data;
         }
       }
-      throw new CacheDataNotFoundError(key);
+      return undefined;
     }
     throw err;
   }
