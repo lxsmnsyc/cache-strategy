@@ -34,7 +34,7 @@ export default async function CACHE_FIRST<R>(
   fetcher: DataFetcher<R>,
   storage: DataStorage<CachedData<R>>,
   age: Age,
-): Promise<R> {
+): Promise<R | undefined> {
   if (storage.has(key)) {
     const data = storage.get(key);
 
